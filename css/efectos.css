@@ -1,0 +1,366 @@
+body{
+    background-color: silver;
+}
+
+div {
+    background-color: green;
+    padding: 15px 30px;
+    text-align: center;
+    font-family: 'Times New Roman';
+    font-weight: bolder;
+    vertical-align: middle;
+    margin: 10px 10px;
+    display: inline-block;
+    width: 80px;
+}
+
+.efecto{
+    height: 75px;
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+}
+
+.efecto:hover{
+    background-color: grey;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:focus{
+    color: red;
+}
+
+.efecto:before{        /* Contenido antes de la clase del div */
+    content: "Hola"
+}
+
+.efecto:after{         /* Contenido despues de la clase del div */
+    content: "Hola"
+}
+
+.triangulo-lateral{
+    -webkit-transform: translateX(0);  /* -webkit- = Prefijos, permite su ejecucion en Google Chrome (Opcional)*/  
+                                       /* X = Traslado horizontal */
+}
+
+.triangulo-lateral:before{
+    content: '';
+    -webkit-transition-duration: 0.3s;
+
+    border-style: solid;
+    border-width: 15px 15px 15px 0px;
+    border-color: transparent
+                    green
+                    transparent
+                    transparent;
+
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    margin-top: -15px;
+}
+
+.triangulo-lateral:hover:before{  /* hover: permite una accion cuando el cursor pasa sobre elemento de la clase*/
+    left: -14px;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+
+.triangulo-fijo {
+    -webkit-transform: translateX(0);
+    -webkit-transition-duration: 0.3s;  /* Tiempo de duracion de aparicion de la clase */
+}
+
+.triangulo-fijo:before {
+    content: '';
+    -webkit-transition-duration: 0.3s;
+    border-style: solid;
+    border-width: 0px 15px 15px 15px;   /* el valor en 0 debe ir hacia la direccion a la que el triangulo
+                                             va a señalar*/
+    border-color: transparent
+                     
+                     transparent 
+                     green             /* el color debe ir opuesto a la direccion a la que el triangulo 
+                                             va a sañalar*/
+                     transparent;
+
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    margin-left: -15px;
+}
+
+.triangulo-fijo:hover{
+    -webkit-transform: translateY(15px)  /* Y = Traslado vertical */
+}
+
+.triangulo-fijo:hover:before {  /* Permite el traslado del triangulo hacia arriba */
+    top: -14px;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+
+.pagina-esquina{
+    -webkit-transform: translateX(0);
+}
+
+.pagina-esquina:before{
+    content: '';
+    -webkit-transition-duration: 0.3s;
+    
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+
+    width: 0px;
+    height: 0px;
+    background: -webkit-linear-gradient(       /* Asignacion de colores en un angulo de 45°*/
+        45deg, silver 45%, #aaa 50%, #ccc 60%, white); /* Porcentaje de aparicion que tendra cada color*/
+}
+
+.pagina-esquina:hover:before{
+    width: 30px;
+    height: 30px;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+
+.sombra-fija{
+    -webkit-transform: translateX(0);
+    -webkit-transition-duration: 0.3s;
+}
+
+.sombra-fija:before{
+    content: '';
+    -webkit-transition-duration: 0.3s;
+
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    top: 100%;
+    height: 10px;
+    background: -webkit-radial-gradient(
+        center, ellipse,
+        rgba(0,0,0,0.35) 0%,
+        rgba(0,0,0,0) 80%);
+    opacity: 0;
+}
+
+.sombra-fija:hover {
+    -webkit-transform: translateY(-5px);
+}
+
+.sombra-fija:hover:before{
+    -webkit-transform: translateY(5px);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+
+.sombra-difuminada{
+    -webkit-transition-duration: 0.3s;
+    box-shadow: 0px 0px 4px rgba(0,0,0,1); /* CUarta opcion es difuminado de la sombra */
+}
+
+.sombra-difuminada:hover{
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+
+.sombra-radial{
+    position: relative;
+    box-shadow: 0px 0px 1px black;
+}
+
+.sombra-radial:before,
+.sombra-radial:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    left: 0px;
+    background: red;
+    opacity: 0;
+    -webkit-transition-duration: 0.3s;
+}
+
+.sombra-radial:before{
+    bottom: 100%;
+    background: radial-gradient(
+        ellipse at 50% 150%,  /* El primero muestra el 50% de la elipse y el segundo el porcentaje de degradado */
+        rgba(0,0,0,0.6) 0%, /* Centro de la sombra */
+        rgba(0,0,0,0) 80%); /* Bordes de la sombra */
+}
+
+.sombra-radial:after{
+    top: 100%;
+    background: radial-gradient(
+        ellipse at 50% -50%,
+        rgba(0,0,0,0.6) 0%, /* Centro de la sombra */
+        rgba(0,0,0,0) 80%); /* Bordes de la sombra */
+}
+
+.sombra-radial:hover:before,
+.sombra-radial:hover:after{
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+
+.sombra-externa{
+    box-shadow: 0px 0px 1px black;
+    -webkit-transition-duration: 0.3s;
+}
+
+.sombra-externa:hover{
+    box-shadow: 2px 3px 9px black;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+
+.sombra-interna{
+    -webkit-transition-duration: 0.2s;
+}
+
+.sombra-interna:hover{
+    box-shadow: 2px 2px 4px black inset, /* inset: permite que el sombreado sea interno */ 
+                -2px -2px 4px black inset;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+
+.resalte-borde{
+    box-shadow: inset 0 0 0 4px #ddd; /* Cuarta opcion es difuminado de la sombra */
+    -webkit-transition-duration: 0.3s;
+}
+
+.resalte-borde:hover{
+    box-shadow: inset 0 0 0 4px #555;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+
+.borde-interno{
+    position: relative;
+}
+
+.borde-interno:before{
+    content: '';
+    -webkit-transition-duration: 0.3s;
+    position: absolute;
+    border: 4px solid white;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    opacity: 0;
+}
+
+.borde-interno:hover:before{
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+
+.borde-expandido{
+    position: relative;
+}
+
+.borde-expandido:before{
+    content: '';
+    position: absolute;
+    border: 4px solid white;
+    top: 0px;
+    left: 0px;
+    right:0px;
+    bottom: 0px;
+    -webkit-transition-duration: 0.3s;
+}
+
+.borde-expandido:hover:before{
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+
+.borde-contraido {
+    position: relative;
+}
+
+.borde-contraido:before {
+    content: '';
+    position: absolute;
+    border: 4px solid white;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    opacity: 0;
+    -webkit-transition-duration: 0.3s;
+}
+
+.borde-contraido:hover:before {
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+
+.esquina-redondeada{
+    -webkit-transition-duration: 0.3s;
+}
+
+.esquina-redondeada:hover{
+    border-radius: 20px;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+
+.menu-barra{
+    background-color: white;
+    width: 90%;
+    top: 0px;
+    left: 0px;
+    text-align: left;
+}
+
+.menu-barra ul{
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+.menu-barra li{
+    display: inline-block;
+    margin: 7px -2px;
+}
+
+.menu-barra a{
+    color: black;
+    font-weight: bolder;
+    /*border: 1px solid blue;*/
+    padding: 5px 10px;
+}
+
+.menu-barra li:nth-of-type(1) a:focus{    /* Al presionar la opcion del menu esta se marcara de azul 
+                                             y al presionar fuera del mismo volvera a la normalidad */
+    border-bottom: 3px solid blue;
+}
+
+.menu-barra li:nth-of-type(2) a:focus {
+    border-bottom: 3px solid blue;
+}
+
+.menu-barra li:nth-of-type(3) a:focus {
+    border-bottom: 3px solid blue;
+}
